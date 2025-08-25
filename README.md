@@ -85,6 +85,7 @@ Keyboard: Arrow keys navigate options; Enter confirms; focus is trapped inside t
 
 ## File structure
 
+```text
 .
 ├─ index.html
 ├─ css/
@@ -103,13 +104,13 @@ Keyboard: Arrow keys navigate options; Enter confirms; focus is trapped inside t
 │  └─ continents-countries.json
 ├─ svg/
 │  ├─ world-map.svg
-│  └─ circle-arrow.svg
+│  └─ circle-arrow.svg              # back nav button
 ├─ img/
-│  ├─ ocean.png
+│  ├─ ocean.png                     # under-layer for the world map
 │  ├─ image-1.png
 │  └─ ...
 └─ README.md / ARCHITECTURE.md / LICENSE-ASSETS.md
-
+```
 ---
 
 ## Key decisions
