@@ -1,4 +1,30 @@
-# Geo-Guess Wordle (Flag & Map Quiz)
+# Geo Guess Country
+
+This is my **first frontend portfolio project**, created after completing the **Frontend Masters Path: Beginner** track.  
+The main purpose is to demonstrate the skills I acquired during the course by building an interactive geography quiz game on top of an SVG world map.  
+
+The development and debugging process was supported by **ChatGPT**, which helped me resolve issues and generate parts of the code. In particular, the **map zoom animation** was fully generated with ChatGPT’s assistance.  
+
+---
+
+## Skills Demonstrated  
+
+- **HTML5**: semantic structure and accessibility basics  
+- **CSS3**: responsive layouts, custom buttons, modals, and dropdown menus  
+- **JavaScript (ES6+)**:  
+  - DOM manipulation and event handling  
+  - Game logic implementation  
+  - Asynchronous programming with `async/await` and `fetch`  
+  - State management for quiz progress, scores, and UI  
+  - Working with **objects** and **arrays**  
+  - Using **map**, **filter**, **spread**, and **destructuring**  
+- **SVG integration**: interactive continents and countries  
+- **Animations**: CSS transitions + programmatic **SVG zoom** animation  
+- **Debugging & iteration**: development process supported by ChatGPT  
+
+---
+
+# Flag & Map Quiz
 
 A lightweight, client-side geography quiz. Guess the country from a flag, answer inside a modal, and watch the world map color as you progress.
 
