@@ -1,0 +1,21 @@
+# Node
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor configs
+.vscode/
+.idea/
+
+# Local only / drafts
+plan/
+utils/
+
+# Logs
+*.log
+
+# If you don’t use npm build for deployment
+package.json
+package-lock.json
