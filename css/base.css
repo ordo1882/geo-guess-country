@@ -178,7 +178,7 @@ img,
     visibility: hidden;
     pointer-events: none;
     transition: opacity .25s ease, visibility .25s ease;
-    transition-delay: 300ms;
+    transition-delay: 250ms;
     z-index: 100;
 }
 

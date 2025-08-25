@@ -12,38 +12,53 @@ import { mapData, zoomState } from "./ui.js";
 
 /* Map zooming function */
 export function zoomToElement(element, duration = 650) {
-    if (!mapData.svgMap) return;
+  if (!mapData.svgMap) return;
 
-    // current viewBox (string -> array)
-    const current = (mapData.svgMap.getAttribute('viewBox') || '').trim()
-        ? mapData.svgMap.getAttribute('viewBox').split(/\s+/).map(Number)
-        : mapData.fullViewBox;
+  const current = (mapData.svgMap.getAttribute('viewBox') || '').trim()
+    ? mapData.svgMap.getAttribute('viewBox').split(/\s+/).map(Number)
+    : mapData.fullViewBox;
 
-    const id = element.id;
-    let target;
+  const id = element.id;
+  const isContinent = !!mapData.continentBBoxes[id];
+  const parentContinent = element.classList.contains('country')
+    ? element.closest('.continent')
+    : null;
 
-    if (mapData.continentBBoxes[id]) {
-        // Zoom to continent
-        const b = mapData.continentBBoxes[id];
-        const bbox = { x: b.x, y: b.y, width: b.width, height: b.height };
+  let target;
 
-        target = fitBBoxToViewBox(mapData.svgMap, bbox, 0.06);
-        updateZoom(element);
-    }
-    else if (!mapData.continentBBoxes[id] && zoomState.lastZoomedElement === element) {
-        // Zoom OUT to global map using fixed world viewbox
-        target = mapData.fullViewBox;
-        updateZoomToZero();
-    }
-    else {
-        // Zoom to country
-        const bbox = element.getBBox();
-        target = fitBBoxToViewBox(mapData.svgMap, bbox, 0.06);
-        updateZoom(element, true);
-    }
+  // --- NEW: toggle back from country to its continent on second tap ---
+  if (zoomState.zoomLevel === 2 && parentContinent && zoomState.lastZoomedElement === parentContinent) {
+    const b = mapData.continentBBoxes[parentContinent.id];
+    target = fitBBoxToViewBox(mapData.svgMap, { x: b.x, y: b.y, width: b.width, height: b.height }, 0.06);
+    updateZoom(parentContinent);  // go to level 1 and remember the continent
+    return animateViewBox(mapData.svgMap, current, target, { duration });
+  }
 
-    animateViewBox(mapData.svgMap, current, target, { duration });
+  // --- NEW: toggle back from continent to world on second tap ---
+  if (zoomState.zoomLevel === 1 && isContinent && zoomState.lastZoomedElement === element) {
+    target = mapData.fullViewBox;
+    updateZoomToZero();           // go to level 0
+    return animateViewBox(mapData.svgMap, current, target, { duration });
+  }
+
+  // --- existing logic (unchanged) ---
+  if (isContinent) {
+    const b = mapData.continentBBoxes[id];
+    const bbox = { x: b.x, y: b.y, width: b.width, height: b.height };
+    target = fitBBoxToViewBox(mapData.svgMap, bbox, 0.06);
+    updateZoom(element);          // level 1, remember the continent
+  } else if (!isContinent && zoomState.lastZoomedElement === element) {
+    target = mapData.fullViewBox; // (kept for safety)
+    updateZoomToZero();
+  } else {
+    const bbox = element.getBBox();
+    target = fitBBoxToViewBox(mapData.svgMap, bbox, 0.06);
+    updateZoom(element, true);    // level 2, remember parent continent internally
+  }
+
+  animateViewBox(mapData.svgMap, current, target, { duration });
 }
+
 
 /* Functions that updating hover effects on MAP and zoom State */
 /* while zooming to the continent or country */
