@@ -19,3 +19,4 @@ utils/
 # If you don’t use npm build for deployment
 package.json
 package-lock.json
+JSDOC_HEADERS.md
