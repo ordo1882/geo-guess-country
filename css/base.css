@@ -178,8 +178,8 @@ img,
     visibility: hidden;
     pointer-events: none;
     transition: opacity .25s ease, visibility .25s ease;
+    transition-delay: 300ms;
     z-index: 100;
-    /* выше всего обычного контента */
 }
 
 #overlay.is-open {
@@ -330,5 +330,11 @@ img,
 @media (max-height: 668px) {
     h1#main-title {
         margin: 1.5rem 0 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal.is-open {
+        transition-delay: 0s;
     }
 }
