@@ -86,29 +86,29 @@ Keyboard: Arrow keys navigate options; Enter confirms; focus is trapped inside t
 ## File structure
 
 .
-├─ index.html
-├─ css/
-│  ├─ base.css
-│  ├─ modal.css
-│  ├─ nav-dropdowns.css
-│  └─ buttons-main.css
-├─ js/
-│  ├─ main.js
-│  ├─ ui.js
-│  ├─ modal.js
-│  ├─ nav-dropdowns.js
-│  ├─ worldmap.js
-│  ├─ zoom.js
-│  ├─ gameplay.js
-│  └─ continents-countries.json
-├─ svg/
-│  ├─ world-map.svg
-│  └─ circle-arrow.svg              # back nav button
-├─ img/
-│  ├─ ocean.png                     # under-layer for the world map
-│  ├─ image-1.png
-│  └─ ...
-└─ README.md / ARCHITECTURE.md / LICENSE-ASSETS.md
++-- index.html
++-- css/
+|   +-- base.css
+|   +-- modal.css
+|   +-- nav-dropdowns.css
+|   \-- buttons-main.css
++-- js/
+|   +-- main.js
+|   +-- ui.js
+|   +-- modal.js
+|   +-- nav-dropdowns.js
+|   +-- worldmap.js
+|   +-- zoom.js
+|   +-- gameplay.js
+|   \-- continents-countries.json
++-- svg/
+|   +-- world-map.svg
+|   \-- circle-arrow.svg  (# back nav button)
++-- img/
+|   +-- ocean.png         (# under-layer for the world map)
+|   +-- image-1.png
+|   \-- ...
+\-- README.md / ARCHITECTURE.md / LICENSE-ASSETS.md
 
 ---
 
