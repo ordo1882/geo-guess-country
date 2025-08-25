@@ -39,6 +39,7 @@ export async function loadSVGMap() {
         zoomState.lastZoomedElement = mapData.svgMap;
         mapHandler(mapData.svgMap);
         tooltipHandler(mapData.svgMap)
+        enablePan(mapData.svgMap);
     } catch (error) {
         console.error('Loading map error:', error);
     }
@@ -131,4 +132,91 @@ function tooltipHandler(svg) {
         }
     });
     svg.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+}
+
+/* Panning function */
+function enablePan(svg) {
+  if (!svg || svg.__panBound) return;
+  svg.__panBound = true;
+
+  const getVB = () => {
+    const raw = (svg.getAttribute('viewBox') || '').trim();
+    return raw ? raw.split(/\s+/).map(Number) : [...mapData.fullViewBox];
+  };
+
+  const clampPan = ([x, y, w, h]) => {
+    const [wx, wy, ww, wh] = mapData.fullViewBox;
+    if (x < wx) x = wx;
+    if (y < wy) y = wy;
+    if (x + w > wx + ww) x = wx + ww - w;
+    if (y + h > wy + wh) y = wy + wh - h;
+    return [x, y, w, h];
+  };
+
+  let startX = 0, startY = 0;
+  let startVB = null;
+  let dragging = false;
+  let raf = null, next = null;
+
+  // pixels before we treat it as a pan (not a tap)
+  const THRESHOLD = 8;
+
+  const onDown = (e) => {
+    if (zoomState.zoomLevel === 0) return;   // only when zoomed in
+    dragging = false;                        // not yet
+    startX = e.clientX;
+    startY = e.clientY;
+    startVB = getVB();
+    // DO NOT preventDefault here — we still want taps to become clicks
+  };
+
+  const onMove = (e) => {
+    if (!startVB) return;
+
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    // become a pan only after threshold
+    if (!dragging && (Math.abs(dx) > THRESHOLD || Math.abs(dy) > THRESHOLD)) {
+      dragging = true;
+      try { svg.setPointerCapture(e.pointerId); } catch {}
+    }
+
+    if (!dragging) return;
+
+    // now that we're panning, prevent page scroll etc.
+    e.preventDefault();
+
+    const [sx, sy, sw, sh] = startVB;
+    const rect = svg.getBoundingClientRect();
+    const pxPerUnitX = rect.width / sw || 1;
+    const pxPerUnitY = rect.height / sh || 1;
+
+    const dxUnits = dx / pxPerUnitX;
+    const dyUnits = dy / pxPerUnitY;
+
+    next = clampPan([sx - dxUnits, sy - dyUnits, sw, sh]);
+
+    if (!raf) {
+      raf = requestAnimationFrame(() => {
+        svg.setAttribute('viewBox', next.join(' '));
+        raf = null;
+      });
+    }
+  };
+
+  const onUp = (e) => {
+    if (dragging) {
+      // we handled a pan: prevent the "click" that would follow
+      e.preventDefault();
+    }
+    dragging = false;
+    startVB = null;
+    try { svg.releasePointerCapture?.(e.pointerId); } catch {}
+  };
+
+  svg.addEventListener('pointerdown', onDown, { passive: true });
+  svg.addEventListener('pointermove', onMove, { passive: false });
+  svg.addEventListener('pointerup', onUp, { passive: false });
+  svg.addEventListener('pointercancel', onUp, { passive: false });
 }
