@@ -1,0 +1,210 @@
+[
+  {
+    "id": "AO",
+    "class": "Angola"
+  },
+  {
+    "id": "AR",
+    "class": "Argentina"
+  },
+  {
+    "id": "AU",
+    "class": "Australia"
+  },
+  {
+    "id": "AZ",
+    "class": "Azerbaijan"
+  },
+  {
+    "id": "CA",
+    "class": "Canada"
+  },
+  {
+    "id": "CN",
+    "class": "China"
+  },
+  {
+    "id": "DK",
+    "class": "Denmark"
+  },
+  {
+    "id": "GB",
+    "class": "United Kingdom"
+  },
+  {
+    "id": "GR",
+    "class": "Greece"
+  },
+  {
+    "id": "ID",
+    "class": "Indonesia"
+  },
+  {
+    "id": "IT",
+    "class": "Italy"
+  },
+  {
+    "id": "JP",
+    "class": "Japan"
+  },
+  {
+    "id": "MY",
+    "class": "Malaysia"
+  },
+  {
+    "id": "NO",
+    "class": "Norway"
+  },
+  {
+    "id": "OM",
+    "class": "Oman"
+  },
+  {
+    "id": "PH",
+    "class": "Philippines"
+  },
+  {
+    "id": "PG",
+    "class": "Papua New Guinea"
+  },
+  {
+    "id": "TR",
+    "class": "Turkey"
+  },
+  {
+    "id": "NZ",
+    "class": "New Zealand"
+  },
+  {
+    "id": "CL",
+    "class": "Chile"
+  },
+  {
+    "id": "RU",
+    "class": "Russian Federation"
+  },
+  {
+    "id": "FR",
+    "class": "France"
+  },
+  {
+    "id": "US",
+    "class": "United States"
+  },
+  {
+    "id": "AS",
+    "class": "American Samoa"
+  },
+  {
+    "id": "AG",
+    "class": "Antigua and Barbuda"
+  },
+  {
+    "id": "BS",
+    "class": "Bahamas"
+  },
+  {
+    "id": "KM",
+    "class": "Comoros"
+  },
+  {
+    "id": "CV",
+    "class": "Cape Verde"
+  },
+  {
+    "id": "KY",
+    "class": "Cayman Islands"
+  },
+  {
+    "id": "CY",
+    "class": "Cyprus"
+  },
+  {
+    "id": "FK",
+    "class": "Falkland Islands"
+  },
+  {
+    "id": "FO",
+    "class": "Faeroe Islands"
+  },
+  {
+    "id": "FM",
+    "class": "Federated States of Micronesia"
+  },
+  {
+    "id": "KN",
+    "class": "Saint Kitts and Nevis"
+  },
+  {
+    "id": "MT",
+    "class": "Malta"
+  },
+  {
+    "id": "MP",
+    "class": "Northern Mariana Islands"
+  },
+  {
+    "id": "MU",
+    "class": "Mauritius"
+  },
+  {
+    "id": "NC",
+    "class": "New Caledonia"
+  },
+  {
+    "id": "PR",
+    "class": "Puerto Rico"
+  },
+  {
+    "id": "PF",
+    "class": "French Polynesia"
+  },
+  {
+    "id": "SB",
+    "class": "Solomon Islands"
+  },
+  {
+    "id": "ST",
+    "class": "São Tomé and Principe"
+  },
+  {
+    "id": "SC",
+    "class": "Seychelles"
+  },
+  {
+    "id": "TC",
+    "class": "Turks and Caicos Islands"
+  },
+  {
+    "id": "TO",
+    "class": "Tonga"
+  },
+  {
+    "id": "TT",
+    "class": "Trinidad and Tobago"
+  },
+  {
+    "id": "VI",
+    "class": "United States Virgin Islands"
+  },
+  {
+    "id": "VU",
+    "class": "Vanuatu"
+  },
+  {
+    "id": "WS",
+    "class": "Samoa"
+  },
+  {
+    "id": "IC",
+    "class": "Canary Islands (Spain)"
+  },
+  {
+    "id": "GP",
+    "class": "Guadeloupe"
+  },
+  {
+    "id": "FJ",
+    "class": "Fiji"
+  }
+]

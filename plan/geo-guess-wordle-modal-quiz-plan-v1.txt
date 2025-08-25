@@ -1,0 +1,64 @@
+Geo-Guess Wordle — Modal Quiz Plan (v1)
+	1.	Modal + backdrop (focus trap)
+
+	•	Show when user clicks Start.
+	•	Background is dimmed and not interactive (use inert on the main app + aria-hidden fallback).
+	•	Modal has role="dialog", aria-modal="true", and focus moves into it on open.
+
+	2.	Quiz content
+
+	•	Fetch a flag image for a country (e.g., Rest Countries API).
+	•	Show 3 options (one correct).
+	•	Keyboard support: arrow keys / tab to move; Enter/Space to choose.
+
+	3.	Answer handling + map coloring
+
+	•	On answer: record correct/incorrect, color the country on the map (visible even through the translucent overlay).
+	•	Overlay stays up, but map updates can be seen beneath it.
+
+	4.	“Continue” button (pause/return)
+
+	•	User can close the modal any time to return to the map view (game state persists).
+	•	Focus returns to the Start/Continue control (or the last meaningful control).
+
+	5.	End of game
+
+	•	When all ~200 countries are colored, show a congratulatory modal with stats and a “Play again” option.
+
+	6.	Reload behavior
+
+	•	The Reload button is disabled while the modal is open, enabled when it’s closed (or always visible but disabled via .disabled class).
+
+	7.	Focus trap rules
+
+	•	Trap Tab/Shift+Tab within the modal.
+	•	First interactive element gains focus on open; close returns focus to the opener.
+	•	Escape to close is optional (nice-to-have).
+
+	8.	State management
+
+	•	Basic states: IDLE → ROUND_ACTIVE (modal) ↔ MAP_VIEW → FINISHED.
+	•	Keep sets: answered, correct, incorrect.
+	•	Persist progress in sessionStorage (later: opt-in localStorage).
+
+	9.	Accessibility & performance
+
+	•	aria-live="polite" for feedback text.
+	•	Keep overlay semi-transparent, block pointer events to the background.
+	•	Debounce any window resize work; no heavy work inside mousemove.
+
+	10.	Error & offline handling
+
+	•	Graceful fallback if the flag API fails (retry or show a placeholder flag + country name).
+
+⸻
+
+Study & Learn mode — what you do next
+
+Your task 1 (small, focused):
+Build just the modal shell + focus trap (no API yet).
+	•	HTML: a .modal (hidden by default) with: heading, image placeholder, three buttons for options, a “Continue” button, and a visually-hidden feedback region.
+	•	CSS: backdrop that dims the page.
+	•	JS: openModal() → sets inert on main, adds aria-hidden="true" to main as fallback, shows modal, moves focus to first button.
+closeModal() → reverses that and returns focus to the opener.
+Implement a simple focus trap: collect focusables inside modal and loop on Tab/Shift+Tab.
