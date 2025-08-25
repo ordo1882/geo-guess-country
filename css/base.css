@@ -167,7 +167,7 @@ img,
     white-space: nowrap;
     transform: translate(10px, 10px);
     display: none;
-    z-index: 50;
+    z-index: 5;
 }
 
 #overlay {
