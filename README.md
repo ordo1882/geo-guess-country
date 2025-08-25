@@ -109,6 +109,9 @@ Keyboard: Arrow keys navigate options; Enter confirms; focus is trapped inside t
 │  ├─ ocean.png                     # under-layer for the world map
 │  ├─ image-1.png
 │  └─ ...
+├─ favicons/
+│  ├─ favicon.ico
+│  └─ ...
 └─ README.md / ARCHITECTURE.md / LICENSE-ASSETS.md
 ```
 ---
