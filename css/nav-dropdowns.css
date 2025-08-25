@@ -1,0 +1,140 @@
+/* ======= NAV BUTTONS ======= */
+
+.nav {
+    position: absolute;
+    display: flex;
+    top: 0.5rem;
+    left: 0.5rem;
+    gap: 0.6rem;
+    align-items: center;
+    z-index: 2;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block
+}
+
+.dropbtn {
+    width: 6.5rem;
+    text-align: center;
+    background-color: var(--color-button-primary-bg);
+    color: white;
+    padding: .7em;
+    font-size: .7rem;
+    letter-spacing: .03rem;
+    text-transform: uppercase;
+    border: 1px solid var(--color-button-secondary-bg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.dropbtn:hover {
+    background-color: var(--color-button-secondary-bg);
+}
+
+.dropdown-content {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    min-width: 100%;
+    width: max-content;
+    font-family: sans-serif;
+    text-align: start;
+    background: var(--color-bg-default);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    z-index: 4;
+    /* Hide but allow transitions */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    transform: translateY(-10px);
+    max-height: 0;
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        max-height .25s ease,
+        visibility 0s linear .25s;
+    /* delay visibility off so fade-out completes */
+}
+
+/* Open state */
+.dropdown.open .dropdown-content {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    max-height: 60vh;
+    /* big enough cap for content */
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        max-height .25s ease,
+        visibility 0s;
+    /* become visible immediately */
+}
+
+.dropdown-content.countries {
+    max-height: min(60vh, 36rem);
+    /* cap height */
+    overflow: auto;
+    /* enable inner scroll */
+    overscroll-behavior: contain;
+    /* stop scroll chaining to page */
+    -webkit-overflow-scrolling: touch;
+    /* smooth on iOS */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), inset 0 -9px 18px -12px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid white;
+}
+
+.dropdown-content a {
+    color: #222;
+    padding: .5em;
+    font-size: .9rem;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid var(--color-dropdown-border);
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown.open .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background: var(--color-dropdown-hover);
+}
+
+.dropdown-content a:first-child:hover {
+    border-radius: 6px 6px 0 0;
+}
+
+.dropdown-content a:last-child:hover {
+    border-radius: 0 0 6px 6px;
+}
+
+.dropdown-content a:only-child {
+    text-align: center;
+}
+
+.dropdown-content a:only-child:hover {
+    border-radius: 6px;
+}
+
+.dropbtn:hover,
+.dropdown-content a:hover,
+#backbtn:hover,
+.land-hover:hover {
+    transition: var(--anim--hover-time);
+}
+
+/* Optional: visually hide filtered items without breaking layout */
+.dropdown-content [data-dd-item][hidden] {
+    display: none !important;
+}

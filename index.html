@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo Guess Wordle</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Major+Mono+Display&family=Roboto:ital,wght@0,100..900;1,100..900&family=WDXL+Lubrifont+TC&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section class="wrapper">
+        <header class="main-header">
+            <div></div>
+            <h1 id="main-title">Geo Guess Wordle</h1>
+            <button id="reloadbtn" disabled aria-label="Reloads the game">Reload
+                Game</button>
+        </header>
+        <div class="map__container">
+            <img class="ocean" src="./img/ocean.png" alt="Ocean background">
+            <div id="tooltip"></div>
+            <nav class="nav">
+                <button id="backbtn" aria-label="Zoom out to regions/countries"></button>
+                <div class="dropdown" name="navigate">
+                    <button class="dropbtn">Navigate</button>
+                    <div class="dropdown-content" role="menu">
+                        <a href="#">Back</a>
+                    </div>
+                </div>
+                <div class="dropdown" name="continents">
+                    <button class="dropbtn">Continents</button>
+                    <div class="dropdown-content" role="menu">
+                    </div>
+                </div>
+                <div class="dropdown" name="countries">
+                    <button class="dropbtn">Countries</button>
+                    <div class="dropdown-content countries" role="menu">
+                    </div>
+                </div>
+            </nav>
+            <!-- SVG Map -->
+            <div id="world-map-container"></div>
+        </div>
+        <!-- Choise game mode section -->
+        <div class="outer-border">
+            <h2 id="mode-title">choose the map area to play</h2>
+            <div class="game-area">
+                <div class="button-wrap">
+                    <button id="world-mode" class="start" disabled value="World" aria-label="World mode">
+                        <span>World</span>
+                    </button>
+                    <div class="button-shadow"></div>
+                </div>
+                <div class="button-wrap">
+                    <button id="continent-mode" class="start" disabled value="Continent" aria-label="Continent mode">
+                        <span>Continent</span>
+                    </button>
+                    <div class="button-shadow"></div>
+                </div>
+            </div>
+        </div>
+    <!-- Modal gameplay section -->
+    </section>
+    <div id="overlay" aria-hidden="true"></div>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <header class="modal-header">
+            <button id="close-modal-btn" aria-label="Interactive button minimizes the modal window">_</button>
+            <ul id="stats">
+            </ul>
+        </header>
+        <h2 id="modal-title">No text</h2>
+        <div id="flag-wrapper">
+        </div>
+        <div id="options">
+        </div>
+    </section>
+    <script type="module" src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+</body>
+
+</html>
