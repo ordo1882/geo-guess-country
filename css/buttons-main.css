@@ -25,7 +25,6 @@
 /* ======== RELOAD BUTTON ======== */
 
 #reloadbtn {
-    justify-self: end;
     width: 100%;
     height: 2.5em;
     background-color: var(--color-reloadbtn-bg);
